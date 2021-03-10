@@ -29,8 +29,8 @@ def main():
             forcejump = client + dwForceJump
             localplayer = pm.read_int(client + dwLocalPlayer)
             if localplayer:
-                onground = pm.read_int(localplayer + m_fFlags)
-                if onground and onground == 257:
+                ongr = pm.read_int(localplayer + m_fFlags)
+                if ongr and ongr == 257:
                     pm.write_int(forcejump, 5)
                     time.sleep(0.08)
                     pm.write_int(forcejump, 4)
