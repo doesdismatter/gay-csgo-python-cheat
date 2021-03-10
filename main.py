@@ -17,9 +17,13 @@ m_flFlashMaxAlpha = (0xA41C)
 
 def main():
     isactive = False
+    isactive2 = False
+    isactive3 = False
     print("CoxPePaine")
-    print("N pt a porni valu H pt a opri valu")
-    print("Esti gay lmfao")
+    print("GLOW: PRESS N TO START, H TO STOP")
+    print("BHOP: JUST HOLD SPACE")
+    print("RADAR: PRESS [ TO START, ] TO STOP")
+    print("NOFLASH: PRESS . TO START, ; TO STOP")
 
     pm = pymem.Pymem("csgo.exe")
     client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
@@ -36,34 +40,69 @@ def main():
                     pm.write_int(forcejump, 4)
 
             time.sleep(0.002)
+
         ##### NOFLASH #####
-        localplayer = pm.read_int(client + dwLocalPlayer)
-        if localplayer:
-            flash = localplayer + m_flFlashMaxAlpha
-            if flash:
-                pm.write_float(flash, float(0))
-        ##### RADAR #####
-        for i in range(1, 32):
-            entity = pm.read_int(client + dwEntityList + i * 0x10)
+
+        if keyboard.is_pressed(".") == True:
+            isactive2 = True
+            print("\n\nNOFLASH ACTIVE")
+            time.sleep(0.5)
+        if keyboard.is_pressed(";") == True:
+            isactive2 = False
+            print("\n\nNOFLASH STOPPED")
+            time.sleep(0.5)
+
+        if isactive2 == True:
             localplayer = pm.read_int(client + dwLocalPlayer)
-            localplayer_team = pm.read_int(localplayer + m_iTeamNum)
-            if entity:
-                entity_team_id = pm.read_int(entity + m_iTeamNum)
-                if entity_team_id != localplayer_team:
-                    pm.write_int(entity + m_bSpotted, 1)
+            if localplayer:
+                flash = localplayer + m_flFlashMaxAlpha
+                if flash:
+                    pm.write_float(flash, float(69.420))
+        elif isactive2 == False:
+            localplayer = pm.read_int(client + dwLocalPlayer)
+            if localplayer:
+                flash = localplayer + m_flFlashMaxAlpha
+                if flash:
+                    pm.write_float(flash, float(255))
+
+        ##### RADAR #####
+        if keyboard.is_pressed("[") == True:
+            isactive3 = True
+            print("\n\nRADAR ACTIVE")
+            time.sleep(0.5)
+        if keyboard.is_pressed("]") == True:
+            isactive3 = False
+            print("\n\nRADAR STOPPED")
+            time.sleep(0.5)
+        if isactive3 == True:
+            for i in range(1, 32):
+                entity = pm.read_int(client + dwEntityList + i * 0x10)
+                localplayer = pm.read_int(client + dwLocalPlayer)
+                localplayer_team = pm.read_int(localplayer + m_iTeamNum)
+                if entity:
+                    entity_team_id = pm.read_int(entity + m_iTeamNum)
+                    if entity_team_id != localplayer_team:
+                        pm.write_int(entity + m_bSpotted, 1)
+        elif isactive3 == False:
+            for i in range(1, 32):
+                entity = pm.read_int(client + dwEntityList + i * 0x10)
+                localplayer = pm.read_int(client + dwLocalPlayer)
+                localplayer_team = pm.read_int(localplayer + m_iTeamNum)
+                if entity:
+                    entity_team_id = pm.read_int(entity + m_iTeamNum)
+                    if entity_team_id != localplayer_team:
+                        pm.write_int(entity + m_bSpotted, 0)
         ##### WALLHACK #####
         if keyboard.is_pressed("N") == True:
             isactive = True
-            os.system("cls")
-            print("\n\n-_-A pornit janghina-_-")
+            print("\n\nWALLHACK ACTIVE")
             time.sleep(0.5)
 
 
 
         if keyboard.is_pressed("H") == True:
             isactive = False
-            os.system("cls")
-            print("\n\n-_-S-a dus pe pula-_-")
+            print("\n\nWALLHACK STOPPED")
             time.sleep(0.5)
 
         if isactive == True:
@@ -75,8 +114,6 @@ def main():
                     if entity:
                         entity_team_id = pm.read_int(entity + m_iTeamNum)
                         entity_glow = pm.read_int(entity + m_iGlowIndex)
-                        localplayer = pm.read_int(client + dwLocalPlayer)
-                        localplayer_team = pm.read_int(localplayer + m_iTeamNum)
 
 
                         if entity_team_id == 2 and entity_team_id != localplayer_team:  # Terrorist
