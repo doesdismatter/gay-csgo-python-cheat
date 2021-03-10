@@ -1,7 +1,6 @@
 import pymem
 import pymem.process
 import keyboard
-import os
 import time
 
 dwEntityList = (0x4DA2F24)
