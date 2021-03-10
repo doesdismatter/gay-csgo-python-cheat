@@ -55,7 +55,6 @@ def main():
         if keyboard.is_pressed("N") == True:
             isactive = True
             os.system("cls")
-            os.system("color a")
             print("\n\n-_-A pornit janghina-_-")
             time.sleep(0.5)
 
@@ -64,7 +63,6 @@ def main():
         if keyboard.is_pressed("H") == True:
             isactive = False
             os.system("cls")
-            os.system("color a")
             print("\n\n-_-S-a dus pe pula-_-")
             time.sleep(0.5)
 
