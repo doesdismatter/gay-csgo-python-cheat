@@ -28,7 +28,9 @@ def main():
     pm = pymem.Pymem("csgo.exe")
     client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
     while True:
+        
         ##### BHOP #####
+        
         if keyboard.is_pressed("Space"):
             forcejump = client + dwForceJump
             localplayer = pm.read_int(client + dwLocalPlayer)
@@ -66,6 +68,7 @@ def main():
                     pm.write_float(flash, float(255))
 
         ##### RADAR #####
+        
         if keyboard.is_pressed("[") == True:
             isactive3 = True
             print("\n\nRADAR ACTIVE")
@@ -92,7 +95,9 @@ def main():
                     entity_team_id = pm.read_int(entity + m_iTeamNum)
                     if entity_team_id != localplayer_team:
                         pm.write_int(entity + m_bSpotted, 0)
+                        
         ##### WALLHACK #####
+        
         if keyboard.is_pressed("N") == True:
             isactive = True
             print("\n\nWALLHACK ACTIVE")
