@@ -5,4 +5,4 @@ Probably detected as fuck, dont use if you dont wanna get banned
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Rn the cheat has a bhop, A bspotted radar, A gay ass noflash, A pretty ok glow and bugged ass triggerbot luck i guess lmfao ¯\\____(ツ)____/¯
+Rn the cheat has a bhop, A bspotted radar, A gay ass noflash, A pretty ok glow and bugged ass triggerbot gl i guess lmfao ¯\\____(ツ)____/¯
