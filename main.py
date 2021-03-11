@@ -121,14 +121,14 @@ def main():
 
                     if entity_team_id == 2 and entity_team_id != localplayer_team:  # Terrorist
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(1))
-                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(0))
-                        pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(0))
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(1))
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(1))
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(1))
                         pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)
 
                     elif entity_team_id == 3 and entity_team_id != localplayer_team:  # Counter-terrorist
-                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(0))
-                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(0))
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x4, float(1 ))
+                        pm.write_float(glow_manager + entity_glow * 0x38 + 0x8, float(1))
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0xC, float(1))
                         pm.write_float(glow_manager + entity_glow * 0x38 + 0x10, float(1))
                         pm.write_int(glow_manager + entity_glow * 0x38 + 0x24, 1)
