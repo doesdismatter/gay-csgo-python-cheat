@@ -32,17 +32,14 @@ def main():
 
         ##### BHOP #####
 
-        if keyboard.is_pressed("Space"):
-            forcejump = client + dwForceJump
+        if keyboard.is_pressed("space"):
             localplayer = pm.read_int(client + dwLocalPlayer)
-            if localplayer:
-                ongr = pm.read_int(localplayer + m_fFlags)
-                if ongr and ongr == 257:
-                    pm.write_int(forcejump, 5)
-                    time.sleep(0.08)
-                    pm.write_int(forcejump, 4)
-
-            time.sleep(0.002)
+            ongr = pm.read_int(localplayer + m_fFlags)
+            if ongr and ongr == 257:
+                pm.write_int(client + dwForceJump, 5)
+                time.sleep(0.08)
+                pm.write_int(client + dwForceJump, 4)
+            time.sleep(0.02)
 
         ##### NOFLASH #####
 
