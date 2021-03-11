@@ -39,7 +39,7 @@ def main():
                 pm.write_int(client + dwForceJump, 5)
                 time.sleep(0.08)
                 pm.write_int(client + dwForceJump, 4)
-            time.sleep(0.02)
+            time.sleep(0.015)
 
         ##### NOFLASH #####
 
@@ -54,16 +54,14 @@ def main():
 
         if isactive2 == True:
             localplayer = pm.read_int(client + dwLocalPlayer)
-            if localplayer:
-                flash = localplayer + m_flFlashMaxAlpha
-                if flash:
-                    pm.write_float(flash, float(69.420))
+            flash = localplayer + m_flFlashMaxAlpha
+            if flash:
+                pm.write_int(localplayer + m_flFlashMaxAlpha, 69)
         elif isactive2 == False:
             localplayer = pm.read_int(client + dwLocalPlayer)
-            if localplayer:
-                flash = localplayer + m_flFlashMaxAlpha
-                if flash:
-                    pm.write_float(flash, float(255))
+            flash = localplayer + m_flFlashMaxAlpha
+            if flash:
+                pm.write_float(localplayer + m_flFlashMaxAlpha, float(255))
 
         ##### RADAR #####
 
