@@ -35,10 +35,10 @@ def main():
         if keyboard.is_pressed("space"):
             localplayer = pm.read_int(client + dwLocalPlayer)
             ongr = pm.read_int(localplayer + m_fFlags)
-            if ongr == 1:
-                pm.write_int(client + dwForceJump, 1)
+            if ongr and ongr == 257:
+                pm.write_int(client + dwForceJump, 5)
                 time.sleep(0.08)
-                pm.write_int(client + dwForceJump, 1)
+                pm.write_int(client + dwForceJump, 4)
             time.sleep(0.015)
 
         ##### NOFLASH #####
@@ -74,14 +74,18 @@ def main():
             print("\n\nRADAR STOPPED")
             time.sleep(0.5)
         if isactive3 == True:
+            for i in range(1, 32):
                 entity = pm.read_int(client + dwEntityList + i * 0x10)
+                localplayer = pm.read_int(client + dwLocalPlayer)
                 localplayer_team = pm.read_int(localplayer + m_iTeamNum)
                 if entity:
                     entity_team_id = pm.read_int(entity + m_iTeamNum)
                     if entity_team_id != localplayer_team:
                         pm.write_int(entity + m_bSpotted, 1)
         elif isactive3 == False:
+            for i in range(1, 32):
                 entity = pm.read_int(client + dwEntityList + i * 0x10)
+                localplayer = pm.read_int(client + dwLocalPlayer)
                 localplayer_team = pm.read_int(localplayer + m_iTeamNum)
                 if entity:
                     entity_team_id = pm.read_int(entity + m_iTeamNum)
@@ -126,8 +130,14 @@ def main():
 ##### TRIGGER #####
 
         if keyboard.is_pressed("alt"):
+            entity_id = pm.read_int(localplayer + m_iCrosshairId)
+            entity = pm.read_int(client + dwEntityList + (entity_id - 1) * 0x10)
+
+            entity_team = pm.read_int(entity + m_iTeamNum)
+
+
             if entity_id > 0 and entity_id <= 64 and localplayer_team != entity_team:
-                pm.write_int(client + dwForceAttack)
+                pm.write_int(client + dwForceAttack, 6)
 
 
 
