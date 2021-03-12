@@ -35,7 +35,7 @@ def main():
         if keyboard.is_pressed("space"):
             localplayer = pm.read_int(client + dwLocalPlayer)
             ongr = pm.read_int(localplayer + m_fFlags)
-            if ongr and ongr == 1:
+            if ongr == 1:
                 pm.write_int(client + dwForceJump, 5)
                 time.sleep(0.08)
                 pm.write_int(client + dwForceJump, 4)
