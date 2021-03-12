@@ -130,14 +130,8 @@ def main():
 ##### TRIGGER #####
 
         if keyboard.is_pressed("alt"):
-            entity_id = pm.read_int(localplayer + m_iCrosshairId)
-            entity = pm.read_int(client + dwEntityList + (entity_id - 1) * 0x10)
-
-            entity_team = pm.read_int(entity + m_iTeamNum)
-
-
             if entity_id > 0 and entity_id <= 64 and localplayer_team != entity_team:
-                pm.write_int(client + dwForceAttack, 6)
+                pm.write_int(client + dwForceAttack)
 
 
 
